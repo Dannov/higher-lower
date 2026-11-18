@@ -15,7 +15,10 @@ export const values: {[key:string]: number} = {
     "K": 13,
     "A": 14,}
 
-let card: string | undefined = sample(Object.keys(values))
+export function create_card(){
+    let card: string | undefined = sample(Object.keys(values))
+    return card
+}
 
 export function print_card(card : string = "") {
     const suits = ["♥", "♦", "♣", "♠"]
@@ -28,6 +31,3 @@ export function print_card(card : string = "") {
 ║      ${card.padStart(2)} ║
 ╚═════════╝`
 }
-
-let x = print_card(card)
-console.log(x)
