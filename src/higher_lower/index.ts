@@ -1,5 +1,6 @@
 import { values , print_card , create_card} from "../card/card.ts"
 import promptSync from "prompt-sync"
+import { text, wallet } from "../money/calculator.ts"
 
 const input = promptSync()
 
@@ -33,13 +34,13 @@ function higher_lower() {
             console.log(print_card(card_now))
             let answer_higher_lower: boolean = question_higher_lower()
             if (answer_higher_lower && values[card_now] < values[card_next]) {
-                console.log("Nice you guessed correctly!")
+                console.log("Nice you guessed correctly!\ncard was: ")
                 console.log(print_card(card_next))
             } else if (!answer_higher_lower && values[card_next] > values[card_next]) {
-                console.log("Nice you guessed correctly!")
+                console.log("Nice you guessed correctly!\ncard was: ")
                 console.log(print_card(card_next))
             } else {
-                console.log("Sorry your guess was incorrect :c")
+                console.log("Sorry your guess was incorrect :c\ncard was: ")
                 console.log(print_card(card_next))
             }
             let answer_continue = question_continue();
@@ -53,4 +54,4 @@ function higher_lower() {
     }
 }
 
-higher_lower()
+console.log(wallet.balance)
