@@ -17,34 +17,43 @@ export const card_value: {[key:string]: number} = {
     "K": 13,
     "A": 14,}
 
-export function give_card_suit() {
-    let suit: string | undefined = sample(suits)
+class Card {
+    suit: string
+    rank: string
+    value: number
+
+    constructor(suit: string, rank: string) {
+        this.suit = suit
+        this.rank = rank
+        this.value = card_value[rank]
+    }
+    print_card():string {
+        return `╔═════════╗
+║ ${this.rank.padEnd(2)}      ║
+║         ║
+║    ${this.suit}    ║
+║         ║
+║      ${this.rank.padStart(2)} ║
+╚═════════╝`
+    }
+}
+
+export function give_card_suit(): string {
+    let suit = sample(suits)
+    if (suit === undefined) {
+        throw new Error("list of suits not found")
+    }
     return suit
 }
 
-export function give_card_rank(){
+export function give_card_rank(): string{
     let card: string | undefined = sample(Object.keys(card_value))
-    return card
-}
-
-export function create_card(){
-    let card: [{rank:string, suit:string}] = {
-        rank : give_card_rank(),
-        suit: give_card_suit(),
-        let value = card_value[rank]
+    if (card === undefined) {
+        throw new Error("dictionary of cards not found")
     }
     return card
 }
 
-export function print_card(card : string = "", suit : string = "") {
-    return `╔═════════╗
-║ ${card.padEnd(2)}      ║
-║         ║
-║    ${suit}    ║
-║         ║
-║      ${card.padStart(2)} ║
-╚═════════╝`
-}
 
-//TODO: aghh... you just need to fix the card creation, im gonna commit this but note that THIS DOES NOT WORK
-//TODO: AND IT NEEDS FIXING
+let my_card = new Card(give_card_suit(), give_card_rank())
+console.log(my_card.print_card())
