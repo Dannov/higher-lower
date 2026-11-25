@@ -1,30 +1,7 @@
-import { card_value , print_card , give_card_rank} from "../card/card.ts"
-import promptSync from "prompt-sync"
+import { } from "../card/card.ts"
+import { input , question_continue , question_higher_lower } from "./questions.ts"
 import { text, wallet } from "../money/calculator.ts"
 
-const input = promptSync()
-
-function question_continue (){
-    while ( true ) {
-        let answer: string = input("Continue?: ").toLowerCase().trim()
-        if (answer == "yes" || answer === "y") {
-            return true
-        } else if (answer === "no" || answer === "n") {
-            return false
-        }
-    }
-}
-
-function question_higher_lower () {
-    while ( true ) {
-        let answer: string = input("Higher or Lower?: ").toLowerCase().trim()
-        if (answer == "higher" || answer === "h") {
-            return true
-        } else if (answer === "lower" || answer === "l") {
-            return false
-        }
-    }
-}
 
 function higher_lower() {
     while (true) {
