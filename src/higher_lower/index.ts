@@ -1,4 +1,4 @@
-import { values , print_card , create_card} from "../card/card.ts"
+import { values , print_card , give_card_value} from "../card/card.ts"
 import promptSync from "prompt-sync"
 import { text, wallet } from "../money/calculator.ts"
 
@@ -28,8 +28,8 @@ function question_higher_lower () {
 
 function higher_lower() {
     while (true) {
-        let card_now: string | undefined = create_card()
-        let card_next: string | undefined = create_card()
+        let card_now: string | undefined = give_card_value()
+        let card_next: string | undefined = give_card_value()
         if (card_now != undefined && card_next != undefined) {
             console.log(print_card(card_now))
             let answer_higher_lower: boolean = question_higher_lower()
@@ -54,4 +54,4 @@ function higher_lower() {
     }
 }
 
-console.log(wallet.balance)
+higher_lower()

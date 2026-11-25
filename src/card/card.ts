@@ -1,5 +1,7 @@
 import { sample } from "lodash-es"
 
+export const suits = ["♥", "♦", "♣", "♠"]
+
 export const values: {[key:string]: number} = {
     "2": 2,
     "3": 3,
@@ -15,18 +17,21 @@ export const values: {[key:string]: number} = {
     "K": 13,
     "A": 14,}
 
-export function create_card(){
+export function give_card_suit() {
+    let suit: string | undefined = sample(suits)
+    return suit
+}
+
+export function give_card_value(){
     let card: string | undefined = sample(Object.keys(values))
     return card
 }
 
-export function print_card(card : string = "") {
-    const suits = ["♥", "♦", "♣", "♠"]
-    let sign = sample(suits)
+export function print_card(card : string = "", suit : string = "") {
     return `╔═════════╗
 ║ ${card.padEnd(2)}      ║
 ║         ║
-║    ${sign}    ║
+║    ${suit}    ║
 ║         ║
 ║      ${card.padStart(2)} ║
 ╚═════════╝`
