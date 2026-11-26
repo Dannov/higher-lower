@@ -17,7 +17,7 @@ export const card_value: {[key:string]: number} = {
     "K": 13,
     "A": 14,}
 
-class Card {
+export class Card {
     suit: string
     rank: string
     value: number
@@ -54,6 +54,3 @@ export function give_card_rank(): string{
     return card
 }
 
-
-let my_card = new Card(give_card_suit(), give_card_rank())
-console.log(my_card.print_card())
