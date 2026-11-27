@@ -1,6 +1,6 @@
 import { main_game } from "./game.ts"
 import { main_menu } from "./questions.ts"
-//import { text, wallet } from "../money/calculator.ts"
+//import { text, wallet } from "../money/wallet.ts"
 
 async function main() {
     while (true) {
@@ -13,9 +13,7 @@ async function main() {
             console.log("in mid development, please be patient")
         } else if (answer === "exit") {
             console.log("game has been closed")
-            return
+            process.exit(0)
         }
     }
 }
-
-main()
