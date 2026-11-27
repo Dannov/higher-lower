@@ -25,7 +25,7 @@ export function question_higher_lower () {
     }
 }
 
-async function main_menu () {
+export async function main_menu () {
     let answer = await select({
         message: "Welcome to Higher Lower\nchoose one option:",
         choices: [
@@ -35,4 +35,13 @@ async function main_menu () {
             {name: "exit", value: "exit"},
         ],
     })
+    if (answer == "play") {
+        return "play"
+    } else if (answer == "add funds") {
+        return "add funds"
+    } else if (answer == "show balance") {
+        return "show balance"
+    } else if (answer == "exit") {
+        return "exit"
+    }
 }

@@ -1,35 +1,21 @@
-import { Card,  give_card_suit , give_card_rank } from "../card/card.ts"
-import { question_continue , question_higher_lower } from "./questions.ts"
+import { main_game } from "./game.ts"
+import { main_menu } from "./questions.ts"
 //import { text, wallet } from "../money/calculator.ts"
 
-function higher_lower_main() {
-    let card_now = new Card(give_card_suit(), give_card_rank())
+async function main() {
     while (true) {
-        let card_next = new Card(give_card_suit(), give_card_rank())
-        console.log(card_now.print_card())
-        let answer_higher_lower: boolean = question_higher_lower()
-        if (answer_higher_lower && card_now.value < card_next.value) {
-            console.log("Nice you guessed correctly!\ncard was: ")
-            console.log(card_next.print_card())
-        } else if (!answer_higher_lower && card_now.value > card_next.value) {
-            console.log("Nice you guessed correctly!\ncard was: ")
-            console.log(card_next.print_card())
-        } else if (card_now.value === card_next.value) {
-            console.log("Tie, game continues\ncard was: ")
-            card_next.print_card()
-            card_now = card_next
-            continue
-        } else {
-            console.log("Sorry your guess was incorrect :c\ncard was: ")
-            console.log(card_next.print_card())
-        }
-        let answer_continue = question_continue();
-        if (answer_continue) {
-            card_now = card_next
-        } else{
-            break
+        let answer: string | undefined = await main_menu()
+        if (answer === "play") {
+            main_game()
+        } else if (answer === "add funds") {
+            console.log("in mid development, please be patient")
+        } else if(answer === "show balance"){
+            console.log("in mid development, please be patient")
+        } else if (answer === "exit") {
+            console.log("game has been closed")
+            return
         }
     }
 }
 
-higher_lower_main()
+main()
