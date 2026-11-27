@@ -1,4 +1,5 @@
 import promptSync from "prompt-sync"
+import {select} from "@inquirer/prompts";
 
 export const input = promptSync()
 
@@ -22,4 +23,16 @@ export function question_higher_lower () {
             return false
         }
     }
+}
+
+async function main_menu () {
+    let answer = await select({
+        message: "Welcome to Higher Lower\nchoose one option:",
+        choices: [
+            {name: "play", value: "play"},
+            {name: "add funds", value: "add funds"},
+            {name: "show balance", value: "show balance"},
+            {name: "exit", value: "exit"},
+        ],
+    })
 }

@@ -53,4 +53,3 @@ export function give_card_rank(): string{
     }
     return card
 }
-

@@ -2,7 +2,7 @@ import { Card,  give_card_suit , give_card_rank } from "../card/card.ts"
 import { question_continue , question_higher_lower } from "./questions.ts"
 //import { text, wallet } from "../money/calculator.ts"
 
-function higher_lower() {
+function higher_lower_main() {
     let card_now = new Card(give_card_suit(), give_card_rank())
     while (true) {
         let card_next = new Card(give_card_suit(), give_card_rank())
@@ -32,4 +32,4 @@ function higher_lower() {
     }
 }
 
-higher_lower()
+higher_lower_main()
